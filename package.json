@@ -1,6 +1,7 @@
 {
   "name": "prisma-schema-forge",
   "version": "0.1.0",
+  "description": "Forge multiple artifacts from your Prisma schema models",
   "bin": {
     "prisma-schema-forge": "./dist/index.js"
   },

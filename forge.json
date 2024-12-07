@@ -1,4 +1,4 @@
 {
-  "prismaSchema": "./shema.prisma",
+  "prismaSchema": "./schema.prisma",
   "output": "./@generated"
 }
