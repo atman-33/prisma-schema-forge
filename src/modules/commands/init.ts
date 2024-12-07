@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-export function createForgeJson() {
+export const createForgeJson = () => {
   const defaultConfig = {
-    prismaSchema: "./schema.prisma",
-    output: "./@generated",
+    prismaSchema: './schema.prisma',
+    templates: './templates',
+    output: './@generated',
   };
 
   const filePath = path.resolve(process.cwd(), 'forge.json');
@@ -16,4 +17,4 @@ export function createForgeJson() {
 
   fs.writeFileSync(filePath, JSON.stringify(defaultConfig, null, 2), 'utf-8');
   console.log('forge.json has been created successfully.');
-}
+};
