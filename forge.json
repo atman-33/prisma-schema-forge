@@ -1,5 +1,5 @@
 {
-  "prismaSchema": "./schema.prisma",
-  "templates": "./templates",
-  "output": "./@generated"
+  "prismaSchema": "./prisma/schema.prisma",
+  "templates": "./prisma-schema-forge/templates",
+  "output": "./prisma-schema-forge/@generated"
 }

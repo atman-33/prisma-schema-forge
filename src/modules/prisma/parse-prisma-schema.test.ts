@@ -45,10 +45,10 @@ model Dummy {
 
     expect(models[0].model).toBe('DummyBook');
     expect(models[0].plural).toBe('DummyBooks');
-    expect(models[0].kebab).toBe('dummy-book');
     expect(models[0].camel).toBe('dummyBook');
-    expect(models[0].pluralKebab).toBe('dummy-books');
-    expect(models[0].pluralCamel).toBe('dummyBooks');
+    expect(models[0].camelPlural).toBe('dummyBooks');
+    expect(models[0].kebab).toBe('dummy-book');
+    expect(models[0].kebabPlural).toBe('dummy-books');
 
     expect(models[0].columns[0].name).toBe('id');
     expect(models[0].columns[0].type).toBe('String');

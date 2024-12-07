@@ -2,6 +2,7 @@
 
 import { Command } from 'commander';
 import { createForgeJson, generateFiles } from './modules/commands';
+import { copySamples } from './modules/commands/samples';
 
 const program = new Command();
 
@@ -16,6 +17,14 @@ program
   .description('Initialize forge.json file')
   .action(() => {
     createForgeJson();
+  });
+
+// command: samples
+program
+  .command('samples')
+  .description('Generate sample templates')
+  .action(() => {
+    copySamples();
   });
 
 // command: generate

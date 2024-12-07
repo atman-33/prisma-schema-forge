@@ -3,10 +3,10 @@ import * as inflection from 'inflection';
 interface Model {
   model: string;
   plural: string;
-  kebab: string;
   camel: string;
-  pluralKebab: string;
-  pluralCamel: string;
+  camelPlural: string;
+  kebab: string;
+  kebabPlural: string;
   columns: {
     name: string;
     type: string;
@@ -19,10 +19,10 @@ const generateModelJson = (models: Model[]) => {
     return {
       model: model.model,
       plural: model.plural,
-      kebab: model.kebab,
       camel: model.camel,
-      pluralKebab: model.pluralKebab,
-      pluralCamel: model.pluralCamel,
+      camelPlural: model.camelPlural,
+      kebab: model.kebab,
+      kebabPlural: model.kebabPlural,
       columns: model.columns.map((column) => ({
         name: column.name,
         type: column.type,
@@ -55,10 +55,10 @@ const parsePrismaSchema = (schemaContent: string): Model[] => {
         plural: inflection.pluralize(model),
         kebab: inflection.dasherize(inflection.underscore(model)).toLowerCase(),
         camel: inflection.camelize(model, true),
-        pluralKebab: inflection
+        kebabPlural: inflection
           .dasherize(inflection.pluralize(inflection.underscore(model)))
           .toLowerCase(),
-        pluralCamel: inflection.camelize(inflection.pluralize(model), true),
+        camelPlural: inflection.camelize(inflection.pluralize(model), true),
         columns: [],
       };
     } else {

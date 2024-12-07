@@ -1,13 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import { defaultConfig } from '../../config/forge-config';
 
 export const createForgeJson = () => {
-  const defaultConfig = {
-    prismaSchema: './schema.prisma',
-    templates: './templates',
-    output: './@generated',
-  };
-
   const filePath = path.resolve(process.cwd(), 'forge.json');
 
   if (fs.existsSync(filePath)) {

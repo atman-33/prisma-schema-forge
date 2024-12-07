@@ -7,6 +7,12 @@ interface ForgeConfig {
   output: string;
 }
 
+export const defaultConfig: ForgeConfig = {
+  prismaSchema: './prisma/schema.prisma',
+  templates: './prisma-schema-forge/templates',
+  output: './prisma-schema-forge/@generated',
+};
+
 export const getConfig = () => {
   const configPath = path.resolve(process.cwd(), 'forge.json');
   if (!fs.existsSync(configPath)) {
