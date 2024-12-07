@@ -1,0 +1,37 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    // provider = "postgresql"
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model DummyBook {
+    // id    String  @id
+    id             String   @id @default(auto()) @map("_id") @db.ObjectId
+    title          String
+    currentChapter Float?
+    score          Float    @default(0.0)
+    completed      Int      @default(0) // 0:未完結, 1:完結
+    review         String?
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @default(now()) @updatedAt
+
+    // ---- Relations ---- //
+    userId String // User.id
+
+    @@unique([userId, title]) // 複合ユニーク制約
+}
+
+model Dummy {
+    // id    String  @id
+    id    String  @id @default(auto()) @map("_id") @db.ObjectId
+    text  String?
+    int   Int?
+    float Float?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+}

@@ -97,4 +97,4 @@ const parsePrismaSchema = (schemaContent: string): Model[] => {
   return generateModelJson(models);
 };
 
-export { parsePrismaSchema };
+export { Model, parsePrismaSchema };
