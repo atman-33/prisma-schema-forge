@@ -50,13 +50,17 @@ model Dummy {
     expect(models[0].kebab).toBe('dummy-book');
     expect(models[0].kebabPlural).toBe('dummy-books');
 
-    expect(models[0].columns[0].name).toBe('id');
-    expect(models[0].columns[0].type).toBe('String');
-    expect(models[0].columns[0].key).toBe('1');
+    expect(models[0].columns[0].name).toBe('Id');
+    expect(models[0].columns[0].type).toBe('string');
+    expect(models[0].columns[0].key).toBeTruthy();
 
-    expect(models[0].columns[1].name).toBe('title');
-    expect(models[0].columns[1].type).toBe('String');
-    expect(models[0].columns[1].key).toBe('0');
+    expect(models[0].columns[1].name).toBe('Title');
+    expect(models[0].columns[1].type).toBe('string');
+    expect(models[0].columns[1].key).toBeFalsy();
+
+    expect(models[0].columns[2].name).toBe('CurrentChapter');
+    expect(models[0].columns[2].nameCamel).toBe('currentChapter');
+    expect(models[0].columns[2].nameKebab).toBe('current-chapter');
 
     expect(models[0].columns.length).toBe(9);
   });

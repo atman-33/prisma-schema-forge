@@ -1,35 +1,29 @@
 import * as inflection from 'inflection';
+import { Column, Model } from '../../types/model';
+import { mapPrismaToTypeScriptType } from '../../utils/map-prisma-to-ts';
 
-interface Model {
-  model: string;
-  plural: string;
-  camel: string;
-  camelPlural: string;
-  kebab: string;
-  kebabPlural: string;
-  columns: {
-    name: string;
-    type: string;
-    key: string;
-  }[];
-}
+const createModel = (model: string): Model => {
+  return {
+    model: inflection.camelize(model),
+    plural: inflection.pluralize(inflection.camelize(model)),
+    kebab: inflection.dasherize(inflection.underscore(model)).toLowerCase(),
+    camel: inflection.camelize(model, true),
+    kebabPlural: inflection
+      .dasherize(inflection.pluralize(inflection.underscore(model)))
+      .toLowerCase(),
+    camelPlural: inflection.camelize(inflection.pluralize(model), true),
+    columns: [],
+  };
+};
 
-const generateModelJson = (models: Model[]) => {
-  return models.map((model) => {
-    return {
-      model: model.model,
-      plural: model.plural,
-      camel: model.camel,
-      camelPlural: model.camelPlural,
-      kebab: model.kebab,
-      kebabPlural: model.kebabPlural,
-      columns: model.columns.map((column) => ({
-        name: column.name,
-        type: column.type,
-        key: column.key,
-      })),
-    };
-  });
+const createColumn = (name: string, type: string, key: boolean): Column => {
+  return {
+    name: inflection.camelize(name),
+    nameCamel: inflection.camelize(name, true),
+    nameKebab: inflection.dasherize(inflection.underscore(name)).toLowerCase(),
+    type: mapPrismaToTypeScriptType(type),
+    key,
+  };
 };
 
 const parsePrismaSchema = (schemaContent: string): Model[] => {
@@ -50,17 +44,7 @@ const parsePrismaSchema = (schemaContent: string): Model[] => {
       }
       const model = modelMatch[1] as string;
       // Create a new model object
-      currentModel = {
-        model: model,
-        plural: inflection.pluralize(model),
-        kebab: inflection.dasherize(inflection.underscore(model)).toLowerCase(),
-        camel: inflection.camelize(model, true),
-        kebabPlural: inflection
-          .dasherize(inflection.pluralize(inflection.underscore(model)))
-          .toLowerCase(),
-        camelPlural: inflection.camelize(inflection.pluralize(model), true),
-        columns: [],
-      };
+      currentModel = createModel(model);
     } else {
       // Check if the line contains the @id or @relation annotation etc
       const idMatch = line.match(/@id/);
@@ -78,13 +62,9 @@ const parsePrismaSchema = (schemaContent: string): Model[] => {
         const columnName = columnMatch[0];
         const type = columnMatch[1];
         // Set the key value based on whether the line contains the @id annotation
-        const key = idMatch ? 1 : 0;
+        const key = idMatch ? true : false;
         // Add the column object to the current model's columns array
-        currentModel.columns.push({
-          name: columnName as string,
-          type: type as string,
-          key: key.toString(),
-        });
+        currentModel.columns.push(createColumn(columnName, type, key));
       }
     }
   });
@@ -94,7 +74,7 @@ const parsePrismaSchema = (schemaContent: string): Model[] => {
     models.push(currentModel);
   }
 
-  return generateModelJson(models);
+  return models;
 };
 
 export { Model, parsePrismaSchema };

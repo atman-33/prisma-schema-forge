@@ -1,5 +1,6 @@
 import path from 'path';
 import { ConfigManager } from '../../config/forge-config';
+import { Output } from '../../types/output';
 import { readFile } from '../../utils/file';
 import { Model } from '../prisma/parse-prisma-schema';
 
@@ -17,15 +18,10 @@ const replaceToken = (content: string, model: Model) => {
   return content;
 };
 
-interface OutputFile {
-  templatePath: string;
-  templateContent: string;
-  outputPath: string;
-  outputContent: string;
-}
-
-const getOutputFile = (templatePath: string, model: Model): OutputFile => {
+const getOutputByModel = (templatePath: string, model: Model): Output => {
   const config = ConfigManager.getConfig();
+
+  const templateContent = readFile(templatePath);
 
   // NOTE: get relative path of template
   const templateRelativePath = path.relative(
@@ -40,7 +36,6 @@ const getOutputFile = (templatePath: string, model: Model): OutputFile => {
     replaceToken(templateRelativePath, model),
   );
 
-  const templateContent = readFile(templatePath);
   const outputContent = replaceToken(templateContent, model);
 
   return {
@@ -51,4 +46,4 @@ const getOutputFile = (templatePath: string, model: Model): OutputFile => {
   };
 };
 
-export { getOutputFile, replaceToken };
+export { getOutputByModel, replaceToken };
