@@ -20,13 +20,13 @@ export const generateFiles = (configFilePath?: string) => {
     templatePaths.map((templatePath) => {
       // $column exsits in path
       if (templatePath.includes('$column')) {
+        model.columns.map((column) => {});
+        // TODO: 要実装
+      } else {
+        // $column not exsits in path
         const output = getOutputByModel(templatePath, model);
         createFile(output.outputPath, output.outputContent);
       }
-
-      // $column not exsits in path
-
-      model.columns.map((column) => {});
     });
   });
 

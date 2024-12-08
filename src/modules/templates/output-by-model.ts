@@ -5,12 +5,12 @@ import { readFile } from '../../utils/file';
 import { Model } from '../prisma/parse-prisma-schema';
 
 const replaceToken = (content: string, model: Model) => {
-  content = content.replace(/__model__/g, model.model);
-  content = content.replace(/__modelPlural__/g, model.plural);
-  content = content.replace(/__modelCamel__/g, model.camel);
-  content = content.replace(/__modelCamelPlural__/g, model.camelPlural);
-  content = content.replace(/__modelKebab__/g, model.kebab);
-  content = content.replace(/__modelKebabPlural__/g, model.kebabPlural);
+  content = content.replace(/__model__/g, model.name.pascal);
+  content = content.replace(/__modelPlural__/g, model.name.pascalPlural);
+  content = content.replace(/__modelCamel__/g, model.name.camel);
+  content = content.replace(/__modelCamelPlural__/g, model.name.camelPlural);
+  content = content.replace(/__modelKebab__/g, model.name.kebab);
+  content = content.replace(/__modelKebabPlural__/g, model.name.kebabPlural);
   content = content.replace(
     /__modelColumns__/g,
     model.columns.map((column) => column.name).join('\n'),
@@ -32,7 +32,7 @@ const getOutputByModel = (templatePath: string, model: Model): Output => {
   const outputPath = path.join(
     process.cwd(),
     config.output,
-    model.kebab,
+    model.name.kebab,
     replaceToken(templateRelativePath, model),
   );
 

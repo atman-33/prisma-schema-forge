@@ -1,26 +1,34 @@
 import * as inflection from 'inflection';
-import { Column, Model } from '../../types/model';
+import { Column, Model, Name } from '../../types/model';
 import { mapPrismaToTypeScriptType } from '../../utils/map-prisma-to-ts';
 
-const createModel = (model: string): Model => {
+const createName = (name: string): Name => {
   return {
-    model: inflection.camelize(model),
-    plural: inflection.pluralize(inflection.camelize(model)),
-    kebab: inflection.dasherize(inflection.underscore(model)).toLowerCase(),
-    camel: inflection.camelize(model, true),
+    pascal: inflection.camelize(name),
+    pascalPlural: inflection.pluralize(inflection.camelize(name)),
+    kebab: inflection.dasherize(inflection.underscore(name)).toLowerCase(),
+    camel: inflection.camelize(name, true),
     kebabPlural: inflection
-      .dasherize(inflection.pluralize(inflection.underscore(model)))
+      .dasherize(inflection.pluralize(inflection.underscore(name)))
       .toLowerCase(),
-    camelPlural: inflection.camelize(inflection.pluralize(model), true),
+    camelPlural: inflection.camelize(inflection.pluralize(name), true),
+  };
+};
+
+const createModel = (model: string): Model => {
+  const name = createName(model);
+
+  return {
+    name,
     columns: [],
   };
 };
 
-const createColumn = (name: string, type: string, key: boolean): Column => {
+const createColumn = (column: string, type: string, key: boolean): Column => {
+  const name = createName(column);
+
   return {
-    name: inflection.camelize(name),
-    nameCamel: inflection.camelize(name, true),
-    nameKebab: inflection.dasherize(inflection.underscore(name)).toLowerCase(),
+    name,
     type: mapPrismaToTypeScriptType(type),
     key,
   };

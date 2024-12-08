@@ -43,24 +43,24 @@ model Dummy {
 
     expect(models.length).toBe(2);
 
-    expect(models[0].model).toBe('DummyBook');
-    expect(models[0].plural).toBe('DummyBooks');
-    expect(models[0].camel).toBe('dummyBook');
-    expect(models[0].camelPlural).toBe('dummyBooks');
-    expect(models[0].kebab).toBe('dummy-book');
-    expect(models[0].kebabPlural).toBe('dummy-books');
+    expect(models[0].name.pascal).toBe('DummyBook');
+    expect(models[0].name.pascalPlural).toBe('DummyBooks');
+    expect(models[0].name.camel).toBe('dummyBook');
+    expect(models[0].name.camelPlural).toBe('dummyBooks');
+    expect(models[0].name.kebab).toBe('dummy-book');
+    expect(models[0].name.kebabPlural).toBe('dummy-books');
 
-    expect(models[0].columns[0].name).toBe('Id');
+    expect(models[0].columns[0].name.pascal).toBe('Id');
     expect(models[0].columns[0].type).toBe('string');
     expect(models[0].columns[0].key).toBeTruthy();
 
-    expect(models[0].columns[1].name).toBe('Title');
+    expect(models[0].columns[1].name.pascal).toBe('Title');
     expect(models[0].columns[1].type).toBe('string');
     expect(models[0].columns[1].key).toBeFalsy();
 
-    expect(models[0].columns[2].name).toBe('CurrentChapter');
-    expect(models[0].columns[2].nameCamel).toBe('currentChapter');
-    expect(models[0].columns[2].nameKebab).toBe('current-chapter');
+    expect(models[0].columns[2].name.pascal).toBe('CurrentChapter');
+    expect(models[0].columns[2].name.camel).toBe('currentChapter');
+    expect(models[0].columns[2].name.kebab).toBe('current-chapter');
 
     expect(models[0].columns.length).toBe(9);
   });
