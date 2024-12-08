@@ -2,7 +2,7 @@ import path from 'path';
 import { ConfigManager } from '../../config/forge-config';
 import { createFile, getAllFilePaths, readFile } from '../../utils/file';
 import { parsePrismaSchema } from '../prisma/parse-prisma-schema';
-import { getOutputByModel } from '../templates/output-by-model';
+import { getOutputByColumn, getOutputByModel } from '../templates/get-output';
 
 /**
  * Generate files from templates and schema.prisma file.
@@ -20,8 +20,10 @@ export const generateFiles = (configFilePath?: string) => {
     templatePaths.map((templatePath) => {
       // $column exsits in path
       if (templatePath.includes('$column')) {
-        model.columns.map((column) => {});
-        // TODO: 要実装
+        model.columns.map((column) => {
+          const output = getOutputByColumn(templatePath, model, column);
+          createFile(output.outputPath, output.outputContent);
+        });
       } else {
         // $column not exsits in path
         const output = getOutputByModel(templatePath, model);

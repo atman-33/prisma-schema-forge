@@ -5,7 +5,7 @@ interface Sample {
 
 export const samples: Sample[] = [
   {
-    filePath: 'prisma-schema-forge/templates/graphql/__modelKebab__.graphql',
+    filePath: 'templates/graphql/__modelKebab__.graphql',
     template: `
 query get__modelPlural__ {
   __modelCamelPlural__ {
@@ -34,7 +34,7 @@ mutation delete__model__($where: __model__WhereUniqueInput!) {
     `,
   },
   {
-    filePath: 'prisma-schema-forge/templates/jotai/__modelKebab__-atom.ts',
+    filePath: 'templates/jotai/__modelKebab__-atom.ts',
     template: `
 
     import { __model__ } from '@/gql/graphql';

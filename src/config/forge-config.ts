@@ -9,8 +9,8 @@ interface ForgeConfig {
 
 export const defaultConfig: ForgeConfig = {
   prismaSchema: './prisma/schema.prisma',
-  templates: './prisma-schema-forge/templates',
-  output: './prisma-schema-forge/@generated',
+  templates: './templates',
+  output: './@generated',
 };
 
 export class ConfigManager {
