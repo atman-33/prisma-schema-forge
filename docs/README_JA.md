@@ -1,5 +1,7 @@
 # prisma-schema-forge
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE)
+
 `prisma-schema-forge` は、Prisma スキーマファイルを元にテンプレートエンジンを利用して、コードやファイルを生成するツールです。`npx` コマンドを使用して簡単に導入し、カスタマイズ可能なテンプレートを使って、効率的にファイルを生成できます。
 
 ## 概要

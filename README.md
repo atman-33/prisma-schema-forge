@@ -1,5 +1,7 @@
 # prisma-schema-forge
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE)
+
 `prisma-schema-forge` is a tool that uses a template engine to generate code and files based on your Prisma schema. It can be easily installed using the `npx` command, and you can customize templates to generate files efficiently.
 
 ## Overview
