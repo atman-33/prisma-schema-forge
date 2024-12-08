@@ -31,8 +31,11 @@ program
 program
   .command('generate')
   .description('Generate files based on template and Prisma schema')
-  .action(() => {
-    generateFiles();
+  .option('-c, --config <path>', 'Specify a custom config file (default: forge.json)')
+  .action((options) => {
+    const configFilePath = options.config || 'forge.json';
+    console.log(configFilePath);
+    generateFiles(configFilePath);
   });
 
 program.parse(process.argv);

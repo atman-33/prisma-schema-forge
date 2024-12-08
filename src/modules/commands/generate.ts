@@ -1,5 +1,5 @@
 import path from 'path';
-import { getConfig } from '../../config/forge-config';
+import { ConfigManager } from '../../config/forge-config';
 import { createFile, getAllFilePaths, readFile } from '../../utils/file';
 import { parsePrismaSchema } from '../prisma/parse-prisma-schema';
 import { getOutputFile } from '../templates/output';
@@ -7,8 +7,9 @@ import { getOutputFile } from '../templates/output';
 /**
  * Generate files from templates and schema.prisma file.
  */
-export const generateFiles = () => {
-  const config = getConfig();
+export const generateFiles = (configFilePath?: string) => {
+  ConfigManager.setConfig(configFilePath);
+  const config = ConfigManager.getConfig();
   const shemeContent = readFile(config.prismaSchema);
   const models = parsePrismaSchema(shemeContent);
 

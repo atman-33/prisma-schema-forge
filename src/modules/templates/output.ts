@@ -1,5 +1,5 @@
 import path from 'path';
-import { getConfig } from '../../config/forge-config';
+import { ConfigManager } from '../../config/forge-config';
 import { readFile } from '../../utils/file';
 import { Model } from '../prisma/parse-prisma-schema';
 
@@ -25,7 +25,7 @@ interface OutputFile {
 }
 
 const getOutputFile = (templatePath: string, model: Model): OutputFile => {
-  const config = getConfig();
+  const config = ConfigManager.getConfig();
 
   // NOTE: get relative path of template
   const templateRelativePath = path.relative(

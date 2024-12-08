@@ -20,6 +20,25 @@
         "${workspaceFolder}/dist/**/*.js"
       ],
       "preLaunchTask": "npm: build"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "generate -c",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "smartStep": true,
+      "program": "${workspaceFolder}/dist/index.js",
+      "args": [
+        "generate",
+        "-c",
+        "./prisma/forge.json"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.js"
+      ],
+      "preLaunchTask": "npm: build"
     }
   ]
 }
