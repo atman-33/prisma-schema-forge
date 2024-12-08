@@ -2,7 +2,7 @@
 
 import { Command } from 'commander';
 import { createForgeJson, generateFiles } from './modules/commands';
-import { copySamples } from './modules/commands/samples';
+import { copySampleTemplates } from './modules/commands/templates';
 
 const program = new Command();
 
@@ -19,12 +19,12 @@ program
     createForgeJson();
   });
 
-// command: samples
+// command: templates
 program
-  .command('samples')
+  .command('templates')
   .description('Generate sample templates')
   .action(() => {
-    copySamples();
+    copySampleTemplates();
   });
 
 // command: generate
@@ -34,7 +34,7 @@ program
   .option('-c, --config <path>', 'Specify a custom config file (default: forge.json)')
   .action((options) => {
     const configFilePath = options.config || 'forge.json';
-    console.log(configFilePath);
+    // console.log(configFilePath);
     generateFiles(configFilePath);
   });
 

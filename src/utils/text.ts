@@ -8,8 +8,6 @@ const removeSuffix = (text: string, suffix: string): string => {
   if (!suffix) {
     return text;
   }
-  console.log(suffix);
-  console.log(-suffix.length);
   return text.endsWith(suffix) ? text.slice(0, -suffix.length) : text;
 };
 

@@ -10,8 +10,8 @@
     "start": "node dist/index.js",
     "---- COMMAND SECTION ----": "----",
     "init": "npm run build && npm run start init",
+    "templates": "npm run build && npm run start templates",
     "generate": "npm run build && npm run start generate",
-    "samples": "npm run build && npm run start samples",
     "---- TEST SECTION ----": "----",
     "test": "jest",
     "test:watch": "jest --watch"
