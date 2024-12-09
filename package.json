@@ -1,6 +1,6 @@
 {
   "name": "prisma-schema-forge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Forge multiple artifacts from your Prisma schema models",
   "keywords": [
     "prisma",
