@@ -9,11 +9,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/atman-33/prisma-schema-forge"
+    "url": "git+https://github.com/atman-33/prisma-schema-forge.git"
   },
   "homepage": "https://github.com/atman-33/prisma-schema-forge",
   "bin": {
-    "prisma-schema-forge": "./dist/index.js"
+    "prisma-schema-forge": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
