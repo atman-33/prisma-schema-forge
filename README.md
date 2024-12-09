@@ -60,24 +60,24 @@ npx prisma-schema-forge generate -c custom-forge.json
 
 ### Model Tokens
 
-| Token                  | Description                                | Example                    |
-| ---------------------- | ------------------------------------------ | -------------------------- |
-| `__model__`            | Model name (singular, PascalCase)          | `SampleDummy`              |
-| `__modelPlural__`      | Model name (plural, PascalCase)            | `SampleDummies`            |
-| `__modelCamel__`       | Model name (singular, camelCase)           | `sampleDummy`              |
-| `__modelCamelPlural__` | Model name (plural, camelCase)             | `sampleDummies`            |
-| `__modelKebab__`       | Model name (singular, kebab-case)          | `sample-dummy`             |
-| `__modelKebabPlural__` | Model name (plural, kebab-case)            | `sample-dummies`           |
-| `__modelColumns__`     | List of model columns                      | `id`<br>`name`<br>`message` |
+| Token                  | Description                       | Example                     |
+| ---------------------- | --------------------------------- | --------------------------- |
+| `__model__`            | Model name (singular, PascalCase) | `SampleDummy`               |
+| `__modelPlural__`      | Model name (plural, PascalCase)   | `SampleDummies`             |
+| `__modelCamel__`       | Model name (singular, camelCase)  | `sampleDummy`               |
+| `__modelCamelPlural__` | Model name (plural, camelCase)    | `sampleDummies`             |
+| `__modelKebab__`       | Model name (singular, kebab-case) | `sample-dummy`              |
+| `__modelKebabPlural__` | Model name (plural, kebab-case)   | `sample-dummies`            |
+| `__modelColumns__`     | List of model columns             | `id`<br>`name`<br>`message` |
 
 ### Column Tokens
 
-| Token                  | Description                                 | Example                      |
-| ---------------------- | ------------------------------------------- | ---------------------------- |
-| `__column__`           | Column name (original, PascalCase)          | `UserId`                     |
-| `__columnCamel__`      | Column name (camelCase)                     | `userId`                     |
-| `__columnKebab__`      | Column name (kebab-case)                    | `user-id`                    |
-| `__columnType__`       | Column type (TypeScript type)               | `string`<br>`number`<br>`Date` |
+| Token             | Description                        | Example                        |
+| ----------------- | ---------------------------------- | ------------------------------ |
+| `__column__`      | Column name (original, PascalCase) | `UserId`                       |
+| `__columnCamel__` | Column name (camelCase)            | `userId`                       |
+| `__columnKebab__` | Column name (kebab-case)           | `user-id`                      |
+| `__columnType__`  | Column type (TypeScript type)      | `string`<br>`number`<br>`Date` |
 
 ### Template File Names and Folder Structure
 

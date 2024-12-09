@@ -53,7 +53,6 @@ const getOutputByModel = (templatePath: string, model: Model, cwd?: string): Out
   outputPath = removeSuffix(outputPath, '.txt');
   console.log(outputPath);
 
-  const a = 'abcde'.endsWith('de') ? 'abcde'.slice(0, -'de'.length) : 'abcde';
   const outputContent = replaceToken(templateContent, model);
 
   return {
