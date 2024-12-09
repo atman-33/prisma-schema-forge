@@ -12,9 +12,8 @@
     "url": "git+https://github.com/atman-33/prisma-schema-forge.git"
   },
   "homepage": "https://github.com/atman-33/prisma-schema-forge",
-  "bin": {
-    "prisma-schema-forge": "dist/index.js"
-  },
+  "bin": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
