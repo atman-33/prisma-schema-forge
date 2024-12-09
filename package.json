@@ -1,9 +1,19 @@
 {
   "name": "prisma-schema-forge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Forge multiple artifacts from your Prisma schema models",
+  "keywords": [
+    "prisma",
+    "template-engine",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atman-33/prisma-schema-forge.git"
+  },
+  "homepage": "https://github.com/atman-33/prisma-schema-forge",
   "bin": {
-    "prisma-schema-forge": "./dist/index.js"
+    "prisma-schema-forge": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
