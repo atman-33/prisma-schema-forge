@@ -60,24 +60,24 @@ npx prisma-schema-forge generate -c custom-forge.json
 
 ### Model トークン
 
-| トークン               | 説明                                   | 例                        |
-| --------------------- | -------------------------------------- | ------------------------- |
-| `__model__`           | モデル名（単数、PascalCase）          | `SampleDummy`             |
-| `__modelPlural__`     | モデル名（複数形、PascalCase）        | `SampleDummies`           |
-| `__modelCamel__`      | モデル名（単数、camelCase）           | `sampleDummy`             |
-| `__modelCamelPlural__`| モデル名（複数形、camelCase）         | `sampleDummies`           |
-| `__modelKebab__`      | モデル名（単数、kebab-case）          | `sample-dummy`            |
-| `__modelKebabPlural__`| モデル名（複数形、kebab-case）        | `sample-dummies`          |
-| `__modelColumns__`    | モデルのカラム名                      | `id`<br>`name`<br>`message`|
+| トークン               | 説明                           | 例                          |
+| ---------------------- | ------------------------------ | --------------------------- |
+| `__model__`            | モデル名（単数、PascalCase）   | `SampleDummy`               |
+| `__modelPlural__`      | モデル名（複数形、PascalCase） | `SampleDummies`             |
+| `__modelCamel__`       | モデル名（単数、camelCase）    | `sampleDummy`               |
+| `__modelCamelPlural__` | モデル名（複数形、camelCase）  | `sampleDummies`             |
+| `__modelKebab__`       | モデル名（単数、kebab-case）   | `sample-dummy`              |
+| `__modelKebabPlural__` | モデル名（複数形、kebab-case） | `sample-dummies`            |
+| `__modelColumns__`     | モデルのカラム名               | `id`<br>`name`<br>`message` |
 
 ### Column トークン
 
-| トークン              | 説明                                    | 例                          |
-| -------------------- | --------------------------------------- | --------------------------- |
-| `__column__`         | カラム名（元の形式、PascalCase）       | `UserId`                    |
-| `__columnCamel__`    | カラム名（camelCase）                  | `userId`                    |
-| `__columnKebab__`    | カラム名（kebab-case）                 | `user-id`                   |
-| `__columnType__`     | カラムの型（TypeScript型）             | `string`<br>`number`<br>`Date`|
+| トークン          | 説明                             | 例                             |
+| ----------------- | -------------------------------- | ------------------------------ |
+| `__column__`      | カラム名（元の形式、PascalCase） | `UserId`                       |
+| `__columnCamel__` | カラム名（camelCase）            | `userId`                       |
+| `__columnKebab__` | カラム名（kebab-case）           | `user-id`                      |
+| `__columnType__`  | カラムの型（TypeScript型）       | `string`<br>`number`<br>`Date` |
 
 ### テンプレートのファイル名とフォルダ構成
 
@@ -136,7 +136,7 @@ templates/
 
 ## 使用例
 
-仮に`shcema.prisma`を以下のように定義したとします。  
+仮に`shcema.prisma`を以下のように定義したとします。
 
 ```prisma
 // ...
